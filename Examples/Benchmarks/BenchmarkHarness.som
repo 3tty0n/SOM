@@ -25,26 +25,26 @@ BenchmarkHarness = (
     "The BenchmarkHarness can be invoked on the command line and should be
     passed a list of benchmarks to run (class names) as arguments. It will
     run each of them and output single as well as a total."
-    
+
     | total benchmarkClass numIterations innerIterations printAll doGC |
-    
+
     benchmarkClass: class = ( benchmarkClass := class )
     printAll: aBool = ( printAll := aBool )
 
     numIterations: anInt = (numIterations := anInt)
-    
+
     total = ( ^ total )
-    
+
     run: args = (
         args length < 2 ifTrue: [ ^ self printUsage ].
-        
+
         self initialize.
         self processArguments: args.
 
         self runBenchmark.
         self printTotal.
     )
-    
+
     initialize = (
         total         := 0.
         numIterations := 1.
@@ -52,7 +52,7 @@ BenchmarkHarness = (
         printAll      := true.
         doGC          := false.
     )
-    
+
     printUsage = (
       './som.sh -cp Smalltalk Examples/Benchmarks/BenchmarkHarness.som [--gc-between-iterations|-gc] benchmark [num-iterations [inner-iter]]' println.
       '' println.
@@ -62,22 +62,22 @@ BenchmarkHarness = (
       '  inner-iter     - number of times the benchmark is executed in an inner loop, ' println.
       '                   which is measured in total, default: 1' println.
     )
-    
+
     processArguments: args = (
         | v arg |
         v := Vector new: args length.
         v appendAll: args.
-        
+
         "First argument is the BenchmarkHarness"
         v removeFirst.
-        
+
         arg := v removeFirst.
         (arg = '--gc-between-iterations' or: [arg = '--gc'])
           ifTrue: [
             doGC := true.
             arg := v removeFirst ].
-        
-        self loadBenchmarkClass: arg. 
+
+        self loadBenchmarkClass: arg.
         v size > 0 ifTrue: [
           arg := v removeFirst.
           numIterations := arg asInteger.
@@ -85,7 +85,7 @@ BenchmarkHarness = (
             arg := v removeFirst.
             innerIterations := arg asInteger ] ]
     )
-    
+
     loadBenchmarkClass: className = (
         | sym cls |
         sym := className asSymbol.
@@ -94,12 +94,12 @@ BenchmarkHarness = (
             self error: 'Failed loading benchmark: ' + className ].
         benchmarkClass := cls.
     )
-        
+
     runBenchmark = (
         | bench result |
         bench := benchmarkClass new.
         bench oneTimeSetup.
-        
+
         ('Starting ' + bench name + ' benchmark.') println.
         result := self doRuns: bench.
         total := total + result.
@@ -107,12 +107,12 @@ BenchmarkHarness = (
 
         '' println
     )
-    
+
     doRuns: bench = (
         | i total |
         i := 0.
         total := 0.
-    
+
         [ i < numIterations ] whileTrue: [
             | startTime endTime runTime endGcStats startGcStats startCompTime endCompTime |
             startGcStats := system gcStats.
@@ -128,21 +128,21 @@ BenchmarkHarness = (
 
             runTime := endTime - startTime.
             printAll ifTrue: [
-              bench name print. ': GC count:     ' print. (((endGcStats) at: 1) - ((startGcStats) at: 1)) print. 'n' println.
-              bench name print. ': GC time:      ' print. (((endGcStats) at: 2) - ((startGcStats) at: 2)) print. 'ms' println.
-              bench name print. ': Allocated:    ' print. (((endGcStats) at: 3) - ((startGcStats) at: 3)) print. 'bytes' println.
-              bench name print. ': Compile time: ' print. (endCompTime - startCompTime) print. 'ms' println.
+              "bench name print. ': GC count:     ' print. (((endGcStats) at: 1) - ((startGcStats) at: 1)) print. 'n' println."
+              "bench name print. ': GC time:      ' print. (((endGcStats) at: 2) - ((startGcStats) at: 2)) print. 'ms' println."
+              "bench name print. ': Allocated:    ' print. (((endGcStats) at: 3) - ((startGcStats) at: 3)) print. 'bytes' println."
+              "bench name print. ': Compile time: ' print. (endCompTime - startCompTime) print. 'ms' println."
               self print: bench run: runTime ].
-        
+
             total := total + runTime.
             i := i + 1.
 
             doGC ifTrue: [
               system fullGC ] ].
-    
+
         ^ total
     )
-    
+
     reportBenchmark: bench result: result = (
         bench name print.
         ': iterations=' print.
@@ -154,14 +154,14 @@ BenchmarkHarness = (
         result print.
         'us' println.
     )
-     
+
     print: bench run: runTime = (
         bench name print.
         ': iterations=1 runtime: ' print.
         runTime print.
         'us' println
     )
-        
+
     printTotal = (
         ('Total Runtime: ' + total asString + 'us') println.
     )
