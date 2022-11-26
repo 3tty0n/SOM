@@ -115,16 +115,16 @@ BenchmarkHarness = (
 
         [ i < numIterations ] whileTrue: [
             | startTime endTime runTime endGcStats startGcStats startCompTime endCompTime |
-            startGcStats := system gcStats.
-            startCompTime := system totalCompilationTime.
+            "startGcStats := system gcStats."
+            "startCompTime := system totalCompilationTime."
             startTime := system ticks.
 
             (bench innerBenchmarkLoop: innerIterations) ifFalse: [
               self error: 'Benchmark failed with incorrect result'. ].
 
             endTime     := system ticks.
-            endGcStats  := system gcStats.
-            endCompTime := system totalCompilationTime.
+            "endGcStats  := system gcStats."
+            "endCompTime := system totalCompilationTime."
 
             runTime := endTime - startTime.
             printAll ifTrue: [
