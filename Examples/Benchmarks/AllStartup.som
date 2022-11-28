@@ -3,8 +3,16 @@ AllStartup = BenchmarkHarness (
     all = (
         ^ Fibonacci, Dispatch, Bounce, Loop, Permute, Queens, Recurse,
           Storage, Sieve, BubbleSort, QuickSort, Sum, TreeSort,
-          NBody, Json
+          NBody
     )
+
+
+    micro = (
+        ^ Fibonacci, Dispatch, Bounce, Loop, Permute, Queens, Recurse,
+          Storage, Sieve, BubbleSort, QuickSort, Sum, TreeSort
+    )
+
+    macro = (^ NBody, Json)
 
     initialize = (
         super initialize.
@@ -28,7 +36,7 @@ AllStartup = BenchmarkHarness (
         bench oneTimeSetup.
 
         result := self doRuns: bench.
-        elapsedTime := result + elapsedTime.
+        elapsedTime := result.
         totalTime := totalTime + result.
         "self reportBenchmark: bench result: result."
 
@@ -39,16 +47,27 @@ AllStartup = BenchmarkHarness (
 
         self initializeTime.
 
-        1 to: iterations do: [:i |
-            elapsedTime := 0.
-            self all do: [:cls |
-                self initialize.
-                self benchmarkClass: cls.
-                self printAll: false.
-                self numIterations: 1.
+        elapsedTime := 0.
+        self all do: [:cls |
+            self initialize.
+            self benchmarkClass: cls.
+            self printAll: false.
+            self numIterations: 2.
+            self runBenchmark.
+        ].
 
-                self runBenchmark.
-            ].
+        1 to: iterations do: [:i |
+
+            self printAll: false.
+            self benchmarkClass: NBody.
+            self numIterations: 100.
+            self runBenchmark.
+
+            self printAll: false.
+            self benchmarkClass: Json.
+            self numIterations: 1.
+            self runBenchmark.
+
             'All: iterations=' print.
             i print.
             ' runtime: ' print.
