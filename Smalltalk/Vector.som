@@ -132,6 +132,10 @@ Vector = (
     size     = ( ^last - first   )
     capacity = ( ^storage length )
 
+    forEach: block = (
+        first to: last - 1 do: [ :i | block value: (storage at: i) ]
+    )
+
     "Conversion"
     asArray = ( | arr |
         arr := Array new: self size.

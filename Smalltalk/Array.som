@@ -29,6 +29,7 @@ Array = (
     at: index            = primitive
     at: index put: value = primitive
     length               = primitive
+    size                 = (^ self length)
     putAll: block        = ( self doIndexes: [ :i |
                                 self at: i put: block value ] )
     first = ( ^ self at: 1 )
