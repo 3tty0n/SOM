@@ -26,18 +26,18 @@ THE SOFTWARE.
 Queens = Benchmark (
 
     | freeMaxs freeRows freeMins queenRows |
-    
+
     benchmark = (
         | result |
         result := true.
         1 to: 10 do: [ :i | result := result and: self queens ].
         ^ result
     )
-    
+
     verifyResult: result = (
       ^ result
     )
-    
+
     queens = (
         freeRows  := Array new:  8 withAll: true.
         freeMaxs  := Array new: 16 withAll: true.
@@ -45,28 +45,31 @@ Queens = Benchmark (
         queenRows := Array new:  8 withAll: -1.
         ^ self placeQueen: 1
     )
-    
+
     placeQueen: c = (
-        1 to: 8 do: [ :r | 
+        | r |
+        r := 1.
+        [ r <= 8 ] whileTrue: [
             (self row: r column: c)
                 ifTrue: [
                     queenRows at: r put: c.
                     self row: r column: c put: false.
                     (c = 8) ifTrue: [ ^true ].
                     (self placeQueen: c + 1) ifTrue: [ ^true ].
-                    self row: r column: c put: true ] ].
+                    self row: r column: c put: true ].
+            r := r + 1.
+        ].
         ^false
     )
-    
+
     row: r column: c = (
         ^(freeRows at: r) && (freeMaxs at: c + r) && (freeMins at: c - r + 8)
     )
-    
+
     row: r column: c put: v = (
         freeRows at: r         put: v.
         freeMaxs at: c + r     put: v.
         freeMins at: c - r + 8 put: v.
     )
-    
-)
 
+)
