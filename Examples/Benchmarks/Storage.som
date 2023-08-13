@@ -26,24 +26,30 @@ THE SOFTWARE.
 Storage = Benchmark (
 
     | count |
-    
+
     benchmark = (
         Random initialize.
         count := 0.
         self buildTreeDepth: 7.
         ^ count
     )
-    
+
     verifyResult: result = (
       ^ self assert: 5461 equals: result
     )
-    
+
     buildTreeDepth: depth = (
         count := count + 1.
-        ^(depth = 1) 
-            ifTrue:  [ Array new: Random next % 10 + 1 ]
+        (depth = 1)
+            ifTrue:  [ ^(Array new: Random next % 10 + 1) ]
             ifFalse: [
-                Array new: 4 withAll: [ self buildTreeDepth: depth - 1 ] ]
+                | array i |
+                array := Array new: 4.
+                i := 1.
+                [ i <= 4 ] whileTrue: [ array at: i put: (self buildTreeDepth: depth - 1). i := i + 1 ].
+                ^array
+            ]
+
     )
-    
+
 )

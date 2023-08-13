@@ -26,16 +26,18 @@ THE SOFTWARE.
 Dispatch = Benchmark (
 
     benchmark = (
-        | cnt |
+        | cnt i |
         cnt := 0.
-        1 to: 20000 do: [ :i | cnt := cnt + (self method: i) ].
+        i := 1.
+        [ i <= 20000 ] whileTrue: [ cnt := cnt + (self method: i). i := i + 1 ].
+        "1 to: 20000 do: [ :i | cnt := cnt + (self method: i) ]."
         ^ cnt
     )
-    
+
     method: argument = ( ^argument )
-    
+
     verifyResult: result = (
       ^ 200010000 = result
     )
-    
+
 )

@@ -26,23 +26,25 @@ THE SOFTWARE.
 Bounce = Benchmark (
 
     benchmark = (
-        | ballCount balls bounces |
-        
+        | ballCount balls bounces i |
+
         Random initialize.
-        
+
         ballCount := 100.
         bounces   := 0.
         balls     := Array new: ballCount withAll: [ Ball new ].
-        
-        1 to: 50 do: [ :i |
-            balls do: [ :ball |
-                (ball bounce) ifTrue: [ bounces := bounces + 1 ] ] ].
 
+        i := 1.
+        [ i <= 50 ] whileTrue: [
+            balls do: [ :ball |
+                        (ball bounce) ifTrue: [ bounces := bounces + 1 ] ].
+            i := i + 1.
+        ].
         ^ bounces
     )
-    
+
     verifyResult: result = (
       ^ self assert: 1331 equals: result
     )
-    
+
 )

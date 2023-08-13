@@ -26,18 +26,22 @@ THE SOFTWARE.
 TreeSort = Sort (
 
     sort: array = (
-        | tree |
-        array doIndexes: [ :i |
+        | tree n i |
+        n := array length.
+        i := 1.
+        [ i <= n ] whileTrue: [
             (i = 1)
                 ifTrue: [ tree := TreeNode new: (array at: i) ]
-                ifFalse: [ tree insert: (array at: i) ] ].
+                ifFalse: [ tree insert: (array at: i) ].
+            i := i + 1.
+        ].
         ^ tree
     )
-    
+
     verifyResult: tree = (
        tree check ifFalse: [ self error: 'Invalid result, tree not sorted' ].
        ^ true.
     )
-    
+
     dataSize = ( ^ 1000 )
 )

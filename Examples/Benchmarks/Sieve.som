@@ -30,16 +30,17 @@ Sieve = Benchmark (
         flags  := Array new: 5000.
         ^ self sieve: flags size: 5000.
     )
-    
+
     verifyResult: result = (
       ^ self assert: 669 equals: result
     )
-    
+
     sieve: flags size: size = (
-        | primeCount |
+        | primeCount i |
         primeCount := 0.
         flags putAll: true.
-        2 to: size do: [ :i |
+        i := 2.
+        [ i <= size ] whileTrue: [
             (flags at: i - 1)
                 ifTrue: [
                     | k |
@@ -47,8 +48,10 @@ Sieve = Benchmark (
                     k := i + i.
                     [ k <= size ]
                         whileTrue: [
-                            flags at: k - 1 put: false. k := k + i ]. ] ].
+                        flags at: k - 1 put: false. k := k + i ]. ].
+            i := i + 1.
+        ].
         ^primeCount
     )
-    
+
 )

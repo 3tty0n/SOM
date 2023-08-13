@@ -26,34 +26,35 @@ THE SOFTWARE.
 Permute = Benchmark (
 
     | count v |
-    
+
     benchmark = (
         count := 0.
         v     := Array new: 7.
         self permute: 6.
         ^ count
     )
-    
+
     verifyResult: result = (
       ^ self assert: 8660 equals: result
     )
-    
+
     permute: n = (
+        | i tmp |
         count := count + 1.
         (n <> 0)
             ifTrue: [
                 self permute: n - 1.
-                n downTo: 1 do: [ :i |
-                    self swap: n with: i.
+                i := n.
+                [ i > 0 ] whileTrue: [
+                    tmp := v at: i.
+                    v at: n put: (v at: i).
+                    v at: i put: tmp.
                     self permute: n - 1.
-                    self swap: n with: i ] ]
+                    tmp := v at: i.
+                    v at: n put: (v at: i).
+                    v at: i put: tmp.
+                    i := i - 1.
+                ]
+        ]
     )
-    
-    swap: i with: j = (
-        | tmp |
-        tmp := v at: i.
-        v at: i put: (v at: j).
-        v at: j put: tmp
-    )
-    
 )
