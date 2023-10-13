@@ -22,25 +22,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 "
+
 Bounce = Benchmark (
 
-  benchmark = (
-    | ballCount balls bounces random |
+    benchmark = (
+        | ballCount balls bounces |
 
-    random := SomRandom new.
+        Random initialize.
 
-    ballCount := 100.
-    bounces   := 0.
-    balls     := Array new: ballCount withAll: [ Ball new: random ].
+        ballCount := 100.
+        bounces   := 0.
+        balls     := Array new: ballCount withAll: [ Ball new ].
 
-    1 to: 50 do: [ :i |
-      balls do: [ :ball |
-        (ball bounce) ifTrue: [ bounces := bounces + 1 ] ] ].
+        1 to: 50 do: [ :i |
+            balls do: [ :ball |
+                (ball bounce) ifTrue: [ bounces := bounces + 1 ] ] ].
 
-    ^ bounces
-  )
+        ^ bounces
+    )
 
-  verifyResult: result = (
-    ^ 1331 = result
-  )
+    verifyResult: result = (
+      ^ self assert: 1331 equals: result
+    )
+
 )
