@@ -117,12 +117,12 @@ BenchmarkHarness = (
             | startTime endTime runTime endGcStats startGcStats startCompTime endCompTime startFullGcTime endFullGcTime |
             "startGcStats := system gcStats."
             "startCompTime := system totalCompilationTime."
-            startTime := system ticks.
+            startTime := system clock_monotonic. "system ticks."
 
             (bench innerBenchmarkLoop: innerIterations) ifFalse: [
               self error: 'Benchmark failed with incorrect result'. ].
 
-            endTime     := system ticks.
+            endTime     := system clock_monotonic. "system ticks."
             "endGcStats  := system gcStats."
             "endCompTime := system totalCompilationTime."
 
