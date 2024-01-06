@@ -57,10 +57,10 @@ Motion = (
 
        we thus have two points, each of them moving on its line segment at constant speed ; we are looking
        for times when the distance between these two points is smaller than r
-       
+
        vec1 is vector of aircraft 1
        vec2 is vector of aircraft 2
-       
+
        a = (V2 - V1)^T * (V2 - V1)"
     a := (vec2 minus: vec1) squaredMagnitude.
 
@@ -95,8 +95,8 @@ Motion = (
       discr := (b * b) - (4.0 * a * c).
       discr < 0.0 ifTrue: [ ^ nil ].
 
-      v1 := ((0.0 - b) - discr sqrt) / (2.0 * a).
-      v2 := ((0.0 - b) + discr sqrt) / (2.0 * a).
+      v1 := ((0.0 - b) - discr sqrt) // (2.0 * a).
+      v2 := ((0.0 - b) + discr sqrt) // (2.0 * a).
 
       (v1 <= v2 and: [((v1  <= 1.0 and: [1.0 <= v2]) or: [
                        (v1  <= 0.0 and: [0.0 <= v2]) or: [
@@ -115,7 +115,7 @@ Motion = (
         result2 := init2 plus: (vec2 times: v).
 
         result := (result1 plus: result2) times: 0.5.
-        
+
         (result x >= Constants MinX and: [
          result x <= Constants MaxX and: [
          result y >= Constants MinY and: [

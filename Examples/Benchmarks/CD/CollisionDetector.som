@@ -63,7 +63,7 @@ CollisionDetector = (
       1 to: reduced size do: [:i |
         | motion1 |
         motion1 := reduced at: i.
-        i + 1 to: reduced size do: [:j | 
+        i + 1 to: reduced size do: [:j |
           | motion2 collision |
           motion2 := reduced at: j.
           collision := motion1 findIntersection: motion2.
@@ -84,7 +84,7 @@ CollisionDetector = (
     fin  := motion posTwo.
 
     v_s := Constants GoodVoxelSize.
-    r   := Constants ProximityRadius / 2.0.
+    r   := Constants ProximityRadius // 2.0.
 
     v_x := voxel x.
     x0  := init x.
@@ -96,11 +96,13 @@ CollisionDetector = (
 
     xv = 0.0 "follow IEEE floating point semantics"
       ifTrue:  [
-        low_x  := Float infinity.
-        high_x := Float infinity ]
+        low_x  :=Double PositiveInfinity.
+        high_x := Double PositiveInfinity ]
       ifFalse: [
-        low_x := (v_x - r - x0) / xv.
-        high_x := (v_x + v_s + r - x0) / xv ].
+        low_x := (v_x - r - x0) // xv.
+        high_x := (v_x + v_s + r - x0) // xv ].
+    low_x := (v_x - r - x0) // xv.
+    high_x := (v_x + v_s + r - x0) // xv.
 
     xv < 0.0 ifTrue: [
       | tmp |
@@ -110,11 +112,14 @@ CollisionDetector = (
 
     yv = 0.0 "follow IEEE floating point semantics"
       ifTrue: [
-        low_y  := Float infinity.
-        high_y := Float infinity ]
+        low_y  := Double PositiveInfinity.
+        high_y := Double PositiveInfinity ]
       ifFalse: [
-        low_y  := (v_y - r - y0) / yv.
-        high_y := (v_y + v_s + r - y0) / yv ].
+        low_y  := (v_y - r - y0) // yv.
+        high_y := (v_y + v_s + r - y0) // yv ].
+
+    low_y  := (v_y - r - y0) // yv.
+    high_y := (v_y + v_s + r - y0) // yv.
 
     yv < 0.0 ifTrue: [
       | tmp |
@@ -126,7 +131,7 @@ CollisionDetector = (
         (low_x <= 1.0 and: [1.0 <= high_x]) or: [
         (low_x <= 0.0 and: [0.0 <= high_x]) or: [
         (0.0 <= low_x and: [high_x <= 1.0])]]]) and: [
-          
+
         (yv = 0.0 and: [v_y <= (y0 + r) and: [(y0 - r) <= (v_y + v_s)]]) or: [ "no motion in y"
           (low_y <= 1.0 and: [1.0 <= high_y]) or: [
           (low_y <= 0.0 and: [0.0 <= high_y]) or: [
@@ -177,8 +182,8 @@ CollisionDetector = (
 
   voxelHash: position = (
     | xDiv yDiv x y |
-    xDiv := (position x / Constants GoodVoxelSize) asInteger.
-    yDiv := (position y / Constants GoodVoxelSize) asInteger.
+    xDiv := (position x // Constants GoodVoxelSize) asInteger.
+    yDiv := (position y // Constants GoodVoxelSize) asInteger.
 
     x := Constants GoodVoxelSize * xDiv.
     y := Constants GoodVoxelSize * yDiv.
@@ -194,9 +199,9 @@ CollisionDetector = (
     seen := RedBlackTree new.
     self recurse: voxelMap seen: seen voxel: (self voxelHash: motion posOne) motion: motion
   )
-  
+
   ----
-  
+
   new = ( ^ super new initialize )
 
 )
