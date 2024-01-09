@@ -32,6 +32,7 @@ BenchmarkHarness = (
     printAll: aBool = ( printAll := aBool )
 
     numIterations: anInt = (numIterations := anInt)
+    innerIterations: asInt = (innerIterations := asInt)
 
     total = ( ^ total )
 
