@@ -25,7 +25,7 @@ Experiment2 = BenchmarkHarness (
         result := self doRuns: bench.
         elapsedTime := result.
         totalTime := totalTime + result.
-        self reportBenchmark: bench result: result.
+        " self reportBenchmark: bench result: result. "
 
     )
 
@@ -61,54 +61,59 @@ Experiment2 = BenchmarkHarness (
         self numIterations: 10.
         self runBenchmark.
 
-        self innerIterations: 10.
-
         self benchmarkClass: PageRank.
         self numIterations: 10.
+        self innerIterations: 10.
         self runBenchmark.
 
         self benchmarkClass: Bounce.
         self numIterations: 1.
+        self innerIterations: 10.
         self runBenchmark.
 
         self benchmarkClass: BubbleSort.
         self numIterations: 10.
+        self innerIterations: 10.
         self runBenchmark.
-
-        self innerIterations: 2.
 
         self benchmarkClass: Fannkuch.
         self numIterations: 1.
+        self innerIterations: 2.
         self runBenchmark.
-
-        self innerIterations: 10.
 
         self benchmarkClass: Mandelbrot.
         self numIterations: 2.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: Queens.
         self numIterations: 2.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: QuickSort.
         self numIterations: 2.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: Storage.
         self numIterations: 1.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: Sieve.
         self numIterations: 10.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: Towers.
         self numIterations: 10.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: TreeSort.
-        self numIterations: 50.
+        self numIterations: 1.
+        self innerIterations: 2.
         self runBenchmark.
 
         " self benchmarkClass: List. "
