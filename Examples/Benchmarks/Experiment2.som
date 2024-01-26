@@ -120,19 +120,6 @@ Experiment2 = BenchmarkHarness (
         " self numIterations: 1. "
         " self runBenchmark. "
 
-        'Total Runtime: ' print.
-        totalTime print.
-        'us' println.
-    )
-
-    repor: result = (
-        'All: iterations=' print.
-        numIterations print.
-        ' average: ' print.
-        (result / numIterations) print.
-        'us' print.
-        ' total: ' print.
-        result print.
-        'us' println.
+        (totalTime // 1000000) println.
     )
 )
