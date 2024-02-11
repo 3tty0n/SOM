@@ -122,4 +122,15 @@ Experiment2 = BenchmarkHarness (
 
         (totalTime // 1000000) println.
     )
+
+    report: result = (
+        'All: iterations=' print.
+        numIterations print.
+        ' average: ' print.
+        (result / numIterations) print.
+        'us' print.
+        ' total: ' print.
+        result print.
+        'us' println.
+    )
 )
