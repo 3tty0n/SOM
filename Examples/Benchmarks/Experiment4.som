@@ -1,4 +1,4 @@
-Experiment3 = BenchmarkHarness (
+Experiment4 = BenchmarkHarness (
     | summedAverage elapsedTime totalTime |
 
     initialize = (
