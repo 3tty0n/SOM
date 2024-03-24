@@ -25,7 +25,7 @@ Experiment3 = BenchmarkHarness (
         result := self doRuns: bench.
         elapsedTime := result.
         totalTime := totalTime + result.
-        self reportBenchmark: bench result: result.
+        " self reportBenchmark: bench result: result. "
 
     )
 
@@ -37,6 +37,11 @@ Experiment3 = BenchmarkHarness (
         self initialize.
         self printAll: false.
 
+        self benchmarkClass: CD.
+        self numIterations: 1.
+        self innerIterations: 1.
+        self runBenchmark.
+
         self benchmarkClass: DeltaBlue.
         self numIterations: 1.
         self innerIterations: 1.
@@ -45,6 +50,41 @@ Experiment3 = BenchmarkHarness (
         " self benchmarkClass: Richards. "
         " self numIterations: 1. "
         " self runBenchmark. "
+
+        self benchmarkClass: Fannkuch.
+        self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Storage.
+        self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Mandelbrot.
+        self numIterations: 2.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Queens.
+        self numIterations: 2.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: QuickSort.
+        self numIterations: 2.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Bounce.
+        self numIterations: 1.
+        self innerIterations: 10.
+        self runBenchmark.
+
+        self benchmarkClass: TreeSort.
+        self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
 
         self benchmarkClass: Json.
         self numIterations: 2.
@@ -56,23 +96,23 @@ Experiment3 = BenchmarkHarness (
         self innerIterations: 1.
         self runBenchmark.
 
-        self benchmarkClass: CD.
-        self numIterations: 1.
-        self innerIterations: 1.
-        self runBenchmark.
-
         self benchmarkClass: NBody.
         self numIterations: 10.
         self innerIterations: 1.
         self runBenchmark.
 
-        self benchmarkClass: PageRank.
+        self benchmarkClass: Sieve.
         self numIterations: 10.
-        self innerIterations: 10.
+        self innerIterations: 2.
         self runBenchmark.
 
-        self benchmarkClass: Bounce.
-        self numIterations: 1.
+        self benchmarkClass: Towers.
+        self numIterations: 10.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: PageRank.
+        self numIterations: 10.
         self innerIterations: 10.
         self runBenchmark.
 
@@ -81,60 +121,14 @@ Experiment3 = BenchmarkHarness (
         self innerIterations: 10.
         self runBenchmark.
 
-        self innerIterations: 2.
-
-        self benchmarkClass: Fannkuch.
-        self numIterations: 1.
-        self innerIterations: 2.
-        self runBenchmark.
-
-        self innerIterations: 10.
-
-        self benchmarkClass: Mandelbrot.
-        self numIterations: 2.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Queens.
-        self numIterations: 2.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: QuickSort.
-        self numIterations: 2.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Storage.
-        self numIterations: 1.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Sieve.
-        self numIterations: 10.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Towers.
-        self numIterations: 10.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: TreeSort.
-        self numIterations: 50.
-        self innerIterations: 10.
-        self runBenchmark.
-
         " self benchmarkClass: List. "
         " self numIterations: 1. "
         " self runBenchmark. "
 
-        'Total Runtime: ' print.
-        totalTime print.
-        'us' println.
+        (totalTime // 1000000) println.
     )
 
-    repor: result = (
+    report: result = (
         'All: iterations=' print.
         numIterations print.
         ' average: ' print.
