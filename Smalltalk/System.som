@@ -84,16 +84,17 @@ System = (
 
     "Time"
     time  = primitive
+    clock_monotonic = primitive
     ticks = primitive      "returns the microseconds since start"
 
     "Force Garbage Collection"
     fullGC = primitive
-    
+
     "To be implemented by SOM implementations that gather such statistics."
     gcStats = ( ^ #(
         0 "Total number of GCs"
         0 "Estimated total GC time in milliseconds"
-        0 "Approximate number of allocated bytes of current thread") )  
+        0 "Approximate number of allocated bytes of current thread") )
     totalCompilationTime = ( ^ 0 "Estimated total compilation time in milliseconds" )
 
     ----------------------------------
