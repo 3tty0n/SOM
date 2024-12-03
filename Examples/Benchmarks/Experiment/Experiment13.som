@@ -47,11 +47,6 @@ Experiment13 = BenchmarkHarness (
         self innerIterations: 1.
         self runBenchmark.
 
-        self benchmarkClass: Towers.
-        self numIterations: 10.
-        self innerIterations: 2.
-        self runBenchmark.
-
         self benchmarkClass: BubbleSort.
         self numIterations: 10.
         self innerIterations: 10.
@@ -103,6 +98,11 @@ Experiment13 = BenchmarkHarness (
 
         self benchmarkClass: Fannkuch.
         self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Towers.
+        self numIterations: 10.
         self innerIterations: 2.
         self runBenchmark.
 

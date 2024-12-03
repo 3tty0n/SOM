@@ -37,6 +37,11 @@ Experiment12 = BenchmarkHarness (
         self initialize.
         self printAll: false.
 
+        self benchmarkClass: Permute.
+        self numIterations: 5.
+        self innerIterations: 1.
+        self runBenchmark.
+
         self benchmarkClass: Fannkuch.
         self numIterations: 1.
         self innerIterations: 2.
@@ -110,11 +115,6 @@ Experiment12 = BenchmarkHarness (
         self benchmarkClass: Sieve.
         self numIterations: 10.
         self innerIterations: 2.
-        self runBenchmark.
-
-        self benchmarkClass: Permute.
-        self numIterations: 5.
-        self innerIterations: 1.
         self runBenchmark.
 
         " self benchmarkClass: List. "
