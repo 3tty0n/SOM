@@ -37,13 +37,9 @@ Experiment15 = BenchmarkHarness (
         self initialize.
         self printAll: false.
 
-        self benchmarkClass: DeltaBlue.
-        self numIterations: 1.
-        self runBenchmark.
-
-        self benchmarkClass: QuickSort.
-        self numIterations: 2.
-        self innerIterations: 2.
+        self benchmarkClass: BubbleSort.
+        self numIterations: 10.
+        self innerIterations: 10.
         self runBenchmark.
 
         self benchmarkClass: TreeSort.
@@ -51,8 +47,48 @@ Experiment15 = BenchmarkHarness (
         self innerIterations: 2.
         self runBenchmark.
 
+        self benchmarkClass: Json.
+        self numIterations: 2.
+        self innerIterations: 1.
+        self runBenchmark.
+
         self benchmarkClass: Queens.
         self numIterations: 2.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: QuickSort.
+        self numIterations: 2.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Bounce.
+        self numIterations: 1.
+        self innerIterations: 10.
+        self runBenchmark.
+
+        self benchmarkClass: CD.
+        self numIterations: 1.
+        self innerIterations: 1.
+        self runBenchmark.
+
+        self benchmarkClass: NBody.
+        self numIterations: 10.
+        self innerIterations: 1.
+        self runBenchmark.
+
+        self benchmarkClass: Fannkuch.
+        self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Storage.
+        self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Towers.
+        self numIterations: 10.
         self innerIterations: 2.
         self runBenchmark.
 
@@ -61,28 +97,9 @@ Experiment15 = BenchmarkHarness (
         self innerIterations: 1.
         self runBenchmark.
 
-        self benchmarkClass: Mandelbrot.
-        self numIterations: 2.
-        self innerIterations: 2.
-        self runBenchmark.
-
-        self benchmarkClass: BubbleSort.
-        self numIterations: 10.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Storage.
-        self numIterations: 1.
-        self innerIterations: 2.
-        self runBenchmark.
-
         self benchmarkClass: Sieve.
         self numIterations: 10.
         self innerIterations: 2.
-        self runBenchmark.
-
-        self benchmarkClass: NBody.
-        self numIterations: 10.
         self runBenchmark.
 
         self benchmarkClass: PageRank.
@@ -90,28 +107,13 @@ Experiment15 = BenchmarkHarness (
         self innerIterations: 10.
         self runBenchmark.
 
-        self benchmarkClass: Towers.
-        self numIterations: 10.
-        self innerIterations: 2.
-        self runBenchmark.
-
-        self benchmarkClass: CD.
+        self benchmarkClass: DeltaBlue.
         self numIterations: 1.
         self innerIterations: 1.
         self runBenchmark.
 
-        self benchmarkClass: Json.
+        self benchmarkClass: Mandelbrot.
         self numIterations: 2.
-        self innerIterations: 1.
-        self runBenchmark.
-
-        self benchmarkClass: Bounce.
-        self numIterations: 1.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Fannkuch.
-        self numIterations: 1.
         self innerIterations: 2.
         self runBenchmark.
 

@@ -37,8 +37,23 @@ Experiment7 = BenchmarkHarness (
         self initialize.
         self printAll: false.
 
-        self benchmarkClass: Fannkuch.
+        self benchmarkClass: TreeSort.
         self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: BubbleSort.
+        self numIterations: 10.
+        self innerIterations: 10.
+        self runBenchmark.
+
+        self benchmarkClass: DeltaBlue.
+        self numIterations: 1.
+        self innerIterations: 1.
+        self runBenchmark.
+
+        self benchmarkClass: QuickSort.
+        self numIterations: 2.
         self innerIterations: 2.
         self runBenchmark.
 
@@ -47,13 +62,9 @@ Experiment7 = BenchmarkHarness (
         self innerIterations: 10.
         self runBenchmark.
 
-        self benchmarkClass: Permute.
-        self numIterations: 5.
-        self runBenchmark.
-
-        self benchmarkClass: QuickSort.
+        self benchmarkClass: Json.
         self numIterations: 2.
-        self innerIterations: 2.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: CD.
@@ -71,12 +82,7 @@ Experiment7 = BenchmarkHarness (
         self innerIterations: 10.
         self runBenchmark.
 
-        self benchmarkClass: BubbleSort.
-        self numIterations: 10.
-        self innerIterations: 10.
-        self runBenchmark.
-
-        self benchmarkClass: Storage.
+        self benchmarkClass: Fannkuch.
         self numIterations: 1.
         self innerIterations: 2.
         self runBenchmark.
@@ -86,13 +92,9 @@ Experiment7 = BenchmarkHarness (
         self innerIterations: 2.
         self runBenchmark.
 
-        self benchmarkClass: Json.
-        self numIterations: 2.
-        self runBenchmark.
-
-        self benchmarkClass: DeltaBlue.
+        self benchmarkClass: Storage.
         self numIterations: 1.
-        self innerIterations: 1.
+        self innerIterations: 2.
         self runBenchmark.
 
         self benchmarkClass: Sieve.
@@ -105,9 +107,9 @@ Experiment7 = BenchmarkHarness (
         self innerIterations: 2.
         self runBenchmark.
 
-        self benchmarkClass: TreeSort.
-        self numIterations: 1.
-        self innerIterations: 2.
+        self benchmarkClass: Permute.
+        self numIterations: 5.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: Mandelbrot.

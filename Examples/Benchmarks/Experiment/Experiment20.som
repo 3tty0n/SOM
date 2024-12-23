@@ -57,11 +57,6 @@ Experiment20 = BenchmarkHarness (
         self innerIterations: 2.
         self runBenchmark.
 
-        self benchmarkClass: Towers.
-        self numIterations: 10.
-        self innerIterations: 2.
-        self runBenchmark.
-
         self benchmarkClass: Sieve.
         self numIterations: 10.
         self innerIterations: 2.
@@ -104,6 +99,11 @@ Experiment20 = BenchmarkHarness (
 
         self benchmarkClass: Storage.
         self numIterations: 1.
+        self innerIterations: 2.
+        self runBenchmark.
+
+        self benchmarkClass: Towers.
+        self numIterations: 10.
         self innerIterations: 2.
         self runBenchmark.
 

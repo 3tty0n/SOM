@@ -39,6 +39,7 @@ Experiment5 = BenchmarkHarness (
 
         self benchmarkClass: Json.
         self numIterations: 2.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: DeltaBlue.
@@ -83,6 +84,7 @@ Experiment5 = BenchmarkHarness (
 
         self benchmarkClass: Permute.
         self numIterations: 5.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: Storage.

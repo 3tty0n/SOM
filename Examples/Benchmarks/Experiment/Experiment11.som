@@ -46,6 +46,7 @@ Experiment11 = BenchmarkHarness (
         self numIterations: 5.
         self innerIterations: 1.
         self runBenchmark.
+
         self benchmarkClass: Storage.
         self numIterations: 1.
         self innerIterations: 2.
@@ -73,6 +74,7 @@ Experiment11 = BenchmarkHarness (
 
         self benchmarkClass: NBody.
         self numIterations: 10.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: CD.

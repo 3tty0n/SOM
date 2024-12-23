@@ -84,6 +84,7 @@ Experiment13 = BenchmarkHarness (
 
         self benchmarkClass: Permute.
         self numIterations: 5.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: TreeSort.

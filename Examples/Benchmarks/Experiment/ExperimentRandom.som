@@ -39,6 +39,7 @@ ExperimentRandom = BenchmarkHarness (
 
         self benchmarkClass: DeltaBlue.
         self numIterations: 1.
+        self innerIterations: 1.
         self runBenchmark.
 
         " self benchmarkClass: Richards. "
@@ -47,18 +48,22 @@ ExperimentRandom = BenchmarkHarness (
 
         self benchmarkClass: Json.
         self numIterations: 2.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: Permute.
         self numIterations: 5.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: CD.
         self numIterations: 1.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: NBody.
         self numIterations: 10.
+        self innerIterations: 1.
         self runBenchmark.
 
         self benchmarkClass: PageRank.
