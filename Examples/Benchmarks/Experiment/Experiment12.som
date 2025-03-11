@@ -82,10 +82,10 @@ Experiment12 = BenchmarkHarness (
         self innerIterations: 1.
         self runBenchmark.
 
-        self benchmarkClass: CD.
+        "self benchmarkClass: CD.
         self numIterations: 1.
         self innerIterations: 1.
-        self runBenchmark.
+        self runBenchmark."
 
         self benchmarkClass: TreeSort.
         self numIterations: 1.

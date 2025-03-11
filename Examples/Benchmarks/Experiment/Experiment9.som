@@ -72,10 +72,10 @@ Experiment9 = BenchmarkHarness (
         self innerIterations: 2.
         self runBenchmark.
 
-        self benchmarkClass: CD.
+        "self benchmarkClass: CD.
         self numIterations: 1.
         self innerIterations: 1.
-        self runBenchmark.
+        self runBenchmark."
 
         self benchmarkClass: NBody.
         self numIterations: 10.

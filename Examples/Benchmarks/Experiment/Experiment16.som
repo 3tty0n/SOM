@@ -77,10 +77,10 @@ Experiment16 = BenchmarkHarness (
         self innerIterations: 10.
         self runBenchmark.
 
-        self benchmarkClass: CD.
-        self numIterations: 1.
-        self innerIterations: 1.
-        self runBenchmark.
+        " self benchmarkClass: CD. "
+        " self numIterations: 1. "
+        " self innerIterations: 1. "
+        " self runBenchmark. "
 
         self benchmarkClass: Fannkuch.
         self numIterations: 1.
