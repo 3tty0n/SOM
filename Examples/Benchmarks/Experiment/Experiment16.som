@@ -122,6 +122,7 @@ Experiment16 = BenchmarkHarness (
         " self runBenchmark. "
 
         (totalTime // 1000000) println.
+        system fullGC.
     )
 
     report: result = (
