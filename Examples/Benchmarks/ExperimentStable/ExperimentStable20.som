@@ -26,9 +26,9 @@ ExperimentStable20 = BenchmarkHarness (
         total := 0.
         1 to: numIterations do: [ :i |
             | startTime endTime runTime |
-            startTime := system clock_monotonic.
+            startTime := system ticks.
             self run.
-            endTime := system clock_monotonic.
+            endTime := system ticks.
             runTime := endTime - startTime.
             total := total + runTime.
         ].
